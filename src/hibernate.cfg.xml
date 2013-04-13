@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost/sali</property>
+    <property name="hibernate.connection.username">salidev</property>
+    <property name="hibernate.connection.password">salisalisali</property>
+    <property name="hbm2ddl.auto">validate</property>
+    <property name="show_sql">true</property>
+    <mapping class="saliSql.SaliUser"/>
+    <mapping class="saliSql.SaliActivity"/>
+    <mapping class="saliSql.SaliLog"/>
+    <mapping class="saliSql.SaliLogAttribute"/>
+    <mapping class="saliSql.SaliLogRow"/>
+    <mapping class="saliSql.SaliMuscleGroup"/>
+    <mapping class="saliSql.SaliProgram"/>
+    <mapping class="saliSql.SaliUserSession"/>
+    <mapping class="saliSql.SaliWeekProgram"/>
+  </session-factory>
+</hibernate-configuration>
