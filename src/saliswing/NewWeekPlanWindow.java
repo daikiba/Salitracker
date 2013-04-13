@@ -13,14 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
-import saliSql.SaliActivity;
 
 /**
  *
  * @author Kone
  */
-public class NewDayPlanWindow extends JFrame implements SaveableForm {
-    private String title = "Uusi P\u00E4iv\u00E4ohjelma";
+public class NewWeekPlanWindow extends JFrame implements SaveableForm {
+    private String title = "Uusi Viikko-ohjelma";
     private JPanel panelBase, basicGrid, basicFlow, largerGrid, boxFlow;
     private OkCancelRow okCancelRow;
     private JLabel labelName;
@@ -29,7 +28,7 @@ public class NewDayPlanWindow extends JFrame implements SaveableForm {
     
     private SaliControllerHibernate contr = new SaliControllerHibernate();
     
-    public NewDayPlanWindow() {
+    public NewWeekPlanWindow() {
         initComponents();
     }
     
@@ -45,9 +44,9 @@ public class NewDayPlanWindow extends JFrame implements SaveableForm {
         boxFlow = new JPanel(new FlowLayout());
         okCancelRow = new OkCancelRow(this);
         
-        labelName = new JLabel("Ohjelman nimi");
+        labelName = new JLabel("Kunto-ohjelman nimi");
         
-        multiSelectBox = new ComboBoxPanel(this, "Aktiviteetit", contr.getActivities(), contr);
+        multiSelectBox = new ComboBoxPanel(this, "Aktiviteetit", contr.getPrograms(), contr);
         
         textFieldName = new JTextField();
         
@@ -72,11 +71,11 @@ public class NewDayPlanWindow extends JFrame implements SaveableForm {
     @Override
     public void save() {
         if ("".equals(textFieldName.getText())) {
-            JOptionPane.showMessageDialog(this, "P\u00E4iv\u00E4ohjelman nimi puuttuu", "Virhe", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Kunto-ohjelman nimi puuttuu", "Virhe", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            if (contr.addNewProgram(textFieldName.getText(), multiSelectBox.getSelectedItems())){
-                JOptionPane.showMessageDialog(this, "Uusi p\u00E4iv\u00E4ohjelma tallennettu", "Valmis", JOptionPane.INFORMATION_MESSAGE);
+            if (contr.addNewWeekProgram(textFieldName.getText(), multiSelectBox.getSelectedItems())){
+                JOptionPane.showMessageDialog(this, "Uusi kunto-ohjelma tallennettu", "Valmis", JOptionPane.INFORMATION_MESSAGE);
             }
             else {
                 JOptionPane.showMessageDialog(this, contr.getError(), "Virhe", JOptionPane.ERROR_MESSAGE);

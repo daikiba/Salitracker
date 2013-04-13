@@ -4,7 +4,7 @@
  */
 package controller;
 
-import java.util.List;
+import java.util.Set;
 import saliSql.*;
 
 /**
@@ -12,9 +12,9 @@ import saliSql.*;
  * @author Kone
  */
 public interface SaliController {
-    boolean verifyUser();
+    boolean verifyUser(String username, String password);
 
-    List<SaliLog> getUserLog();
+    Set<SaliLog> getUserLog();
     String getUserFullName();
     String getEmail();
     float getUserHeight();
@@ -31,13 +31,13 @@ public interface SaliController {
     void setUserWeekProgram(SaliWeekProgram weekProgram);
 
     void addNewUserLog(SaliLog log);
-    void addNewProgram(SaliProgram program);
-    void addNewWeekProgram(SaliWeekProgram weekProgram);
-    void addNewActivity(SaliActivity activity);
+    boolean addNewProgram(String name, Set<SaliActivity> iSet);
+    boolean addNewWeekProgram(String name, Set<SaliProgram> iSet);
+    boolean addNewActivity(String name, String description, int defaultAmountOfReps, Set<SaliMuscleGroup> iSet);
     void addNewMuscleGroup(SaliMuscleGroup muscleGroup);
 
-    List<SaliMuscleGroup> getMuscleGroups();
-    List<SaliProgram> getPrograms();
-    List<SaliWeekProgram> getWeekPrograms();
-    List<SaliActivity> getActivities();
+    Set<SaliMuscleGroup> getMuscleGroups();
+    Set<SaliProgram> getPrograms();
+    Set<SaliWeekProgram> getWeekPrograms();
+    Set<SaliActivity> getActivities();
 }

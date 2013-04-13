@@ -81,6 +81,7 @@ public class SaliActivity implements Serializable {
         saliMuscleGroups.add(group);
     }
     
+    @Override
     public String toString() {
         return name;
     }

@@ -17,13 +17,13 @@ import javax.persistence.*;
 @Table(name="program")
 public class SaliProgram implements Serializable {
     private int id;
-    private String programName;
+    private String name;
     private Set<SaliActivity> activities = new HashSet<SaliActivity>();
     
     public SaliProgram() { }
     
     public SaliProgram(int id, String programName) {
-        this.programName = programName;
+        this.name = programName;
     }
     
     @Id
@@ -36,12 +36,12 @@ public class SaliProgram implements Serializable {
         this.id = id;
     }
 
-    public String getProgramName() {
-        return programName;
+    public String getName() {
+        return name;
     }
 
-    public void setProgramName(String programName) {
-        this.programName = programName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @ManyToMany
@@ -55,5 +55,10 @@ public class SaliProgram implements Serializable {
     
     public void addActivity(SaliActivity activity) {
         activities.add(activity);
+    }
+    
+    @Override
+    public String toString() {
+        return name;
     }
 }

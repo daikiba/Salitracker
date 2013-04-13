@@ -4,15 +4,15 @@
  */
 package saliswing;
 
-import controller.SaliController;
 import controller.SaliControllerHibernate;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -24,14 +24,16 @@ public class ComboBoxPanel<T> extends JPanel {
 
     private JLabel descriptionLabel;
     private JComboBox comboBoxItems;
-    private List<T> listItems;
-    private List<String> selectedItems;
+    private Set<T> listItems;
+    private Set<T> selectedItems;
     private JPanel gridBox, flowBox;
     protected SaliControllerHibernate controller;
+    private JFrame ghostBusters;
 
-    public ComboBoxPanel(String description, List<T> items, SaliControllerHibernate controller) {
+    public ComboBoxPanel(JFrame parent, String description, Set<T> items, SaliControllerHibernate controller) {
+        ghostBusters = parent;
         descriptionLabel = new JLabel(description);
-        selectedItems = new ArrayList();
+        selectedItems = new HashSet<>();
         gridBox = new JPanel(new GridLayout(0, 1));
         flowBox = new JPanel(new FlowLayout());
         listItems = items;
@@ -46,7 +48,7 @@ public class ComboBoxPanel<T> extends JPanel {
         comboBoxItems.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                addNewRow(comboBoxItems.getSelectedItem().toString());
+                addNewRow((T)comboBoxItems.getSelectedItem());
                 updateMyView();
             }
         });
@@ -59,15 +61,20 @@ public class ComboBoxPanel<T> extends JPanel {
         this.add(gridBox);
     }
 
-    private void addNewRow(String rowName) {
-        if (!selectedItems.contains(rowName) && comboBoxItems.getSelectedIndex() != 0) {
-            gridBox.add(new JLabel(rowName), 0);
-            selectedItems.add(rowName);
+    private void addNewRow(T rowItem) {
+        if (!selectedItems.contains(rowItem) && comboBoxItems.getSelectedIndex() != 0) {
+            gridBox.add(new JLabel(rowItem.toString()), 0);
+            selectedItems.add(rowItem);
         }
     }
     
     private void updateMyView(){
-        this.revalidate();
-        this.repaint();
+        //this.revalidate();
+        //this.repaint();
+        ghostBusters.pack();
+    }
+    
+    public Set<T> getSelectedItems() {
+        return selectedItems;
     }
 }

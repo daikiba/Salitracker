@@ -43,6 +43,7 @@ public class SaliMuscleGroup implements Serializable {
         this.muscleGroup = muscleGroup;
     }
     
+    @Override
     public String toString() {
         return muscleGroup;
     }

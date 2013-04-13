@@ -10,6 +10,8 @@ package saliswing;
  */
 public class Main {
     public static void main(String[] args) {
-        new NewActivityWindow();
+        //new NewDayPlanWindow();
+        //new NewActivityWindow();
+        new NewWeekPlanWindow();
     }
 }

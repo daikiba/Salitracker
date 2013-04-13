@@ -53,4 +53,9 @@ public class SaliWeekProgram implements Serializable {
     public void setPrograms(Set<SaliProgram> programs) {
         this.programs = programs;
     }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
 }

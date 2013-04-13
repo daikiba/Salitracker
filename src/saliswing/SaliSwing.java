@@ -70,7 +70,43 @@ public class SaliSwing {
             istunto.saveOrUpdate(row3);
             istunto.saveOrUpdate(log);
             
-
+            
+            
+            SaliActivity c1 = new SaliActivity(0, "Chest activity 1", "Something fabulous", 10);
+            SaliActivity c2 = new SaliActivity(0, "Chest activity 2", "Something fierce", 10);
+            SaliActivity c3 = new SaliActivity(0, "Chest activity 3", "Something fun", 10);
+            
+            SaliActivity back1 = new SaliActivity(0, "Back act", "Be careful when doing this", 20);
+            SaliActivity back2 = new SaliActivity(0, "Extreme Back activity", "Focus on the form", 8);
+            
+            SaliActivity leg = new SaliActivity(0, "Jogging 60 minutes", "Keep up a good sweat", 1);
+            
+            SaliProgram chestprogram = new SaliProgram(0, "Example Chest Day");
+            chestprogram.addActivity(c1);
+            chestprogram.addActivity(c2);
+            chestprogram.addActivity(c3);
+            
+            SaliProgram backprogram = new SaliProgram(0, "Example Back Day");
+            backprogram.addActivity(back1);
+            backprogram.addActivity(back2);
+            
+            SaliProgram legprogram = new SaliProgram(0, "Example Leg Day");
+            legprogram.addActivity(leg);
+            
+            istunto.saveOrUpdate(c1);
+            istunto.saveOrUpdate(c2);
+            istunto.saveOrUpdate(c3);
+            
+            istunto.saveOrUpdate(back1);
+            istunto.saveOrUpdate(back2);
+            
+            istunto.saveOrUpdate(leg);
+            
+            istunto.saveOrUpdate(chestprogram);
+            istunto.saveOrUpdate(backprogram);
+            istunto.saveOrUpdate(legprogram);
+            
+            
             transaktio.commit();
         } catch (Exception e) {
             if (transaktio != null & transaktio.isActive()) {
