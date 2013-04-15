@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost/sali</property>
+    <property name="hibernate.connection.url">jdbc:mysql://kulma.dy.fi/sali</property>
     <property name="hibernate.connection.username">salidev</property>
     <property name="hibernate.connection.password">salisalisali</property>
     <property name="hbm2ddl.auto">validate</property>
